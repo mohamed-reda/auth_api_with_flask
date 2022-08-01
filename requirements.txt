@@ -1,0 +1,4 @@
+Flask
+Flask-RESTful
+Flask-Security
+flask_jwt
