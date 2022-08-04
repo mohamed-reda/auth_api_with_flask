@@ -46,7 +46,7 @@ class Item(Resource):
         except:
             return {"message": "An error occurred inserting the item."}
 
-        return item
+        return item, 201
 
     @classmethod
     def insert(cls, item):

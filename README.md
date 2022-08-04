@@ -6,21 +6,63 @@
 
 • num_of_servings: The number of servings.
 
-• cook_time: The cooking time required. This is an integer whose units are in 
-seconds.
+• cook_time: The cooking time required. This is an integer whose units are in seconds.
 
 • directions: The directions.
 
 • is_publish: The publish status of the recipe; the default is draft
- 
+
+
+------------------------------------------------------------------------------
+
+Attached to this lecture as a Resource is a short guide on how to configure Flask-JWT—it includes things like:
+
+Changing the authentication endpoint (by default, /auth);
+
+Changing the token expiration time (by default, 5 minutes);
+
+Changing the authentication key name (by default, username);
+
+Changing the authentication response body (by default, only contains access_token); and
+
+Changing the error handlers.
+
+------------------------------------------------------------------------------
+Authentication URL
+
+app.config['JWT_AUTH_URL_RULE'] = '/login'
+
+jwt = JWT(app, authenticate, identity)
+
+------------------------------------------------------------------------------
+Token Expiration Time
+
+# config JWT to expire within half an hour
+
+app.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=1800)
+
+------------------------------------------------------------------------------
+Authentication Key Name
+
+# config JWT auth key name to be 'email' instead of default 'username'
+
+app.config['JWT_AUTH_USERNAME_KEY'] = 'email'
+
+------------------------------------------------------------------------------
+Authentication Response Handler
+
+
+------------------------------------------------------------------------------
 
 [comment]: <> (<img src="" width="800" height="400"  />  )
 
 
 
+------------------------------------------------------------------------------
+
 ## commands
 
-1 
+1
 
 pip install -r requirements.txt
 
@@ -56,10 +98,9 @@ here without (.) to the command, it will create config folder in config folder
 
 django-admin startapp pizza
 
-
 4
 
-pip3 install django-widget-tweaks 
+pip3 install django-widget-tweaks
 
 
 
@@ -116,7 +157,7 @@ python manage.py createsuperuser
 
 nilecrocodile
 
-mohamed.reda.007007@gmail.com 
+mohamed.reda.007007@gmail.com
 
 12345678
 
@@ -148,9 +189,7 @@ user
 user.notes.count()
 
 ------------------------------------------------------------------------------
-http POST localhost:5000/recipes name="Cheese Pizza" description="This is 
-a lovely cheese pizza"
+http POST localhost:5000/recipes name="Cheese Pizza" description="This is a lovely cheese pizza"
 
-curl -i -X POST localhost:5000/recipes -H "Content-Type: application/
-json" -d '{"name":"Cheese Pizza", "description":"This is a lovely cheese 
-pizza"}'
+curl -i -X POST localhost:5000/recipes -H "Content-Type: application/ json" -d '{"name":"Cheese Pizza", "description":"
+This is a lovely cheese pizza"}'
